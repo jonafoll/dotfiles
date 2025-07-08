@@ -1,6 +1,6 @@
 * {
   /* General taskbar font, I like maple mono ^-^*/
-  font-family: "FiraCode Nerd Font", FontAwesome, sans-serif;
+  font-family: "JetBrainsMono Nerd Font", FontAwesome, sans-serif;
   border-radius: 8;
   font-size: 14px;
   padding: 0px;
@@ -15,10 +15,14 @@ window#waybar {
   border-style: none;
 }
 
+#cpu,
+#window,
+#memory,
 #battery,
 #network,
 #clock,
 #custom-applauncher,
+#custom-disk,
 #tray,
 #workspaces,
 #pulseaudio {
@@ -42,6 +46,9 @@ window#waybar {
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
   transition-duration: 120ms;
+}
+
+#custom-disk {
 }
 
 #custom-applauncher {
