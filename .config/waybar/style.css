@@ -1,7 +1,9 @@
 * {
   /* General taskbar font, I like maple mono ^-^*/
   font-family: "JetBrainsMono Nerd Font", FontAwesome, sans-serif;
-  border-radius: 8;
+  /* It's better to remove border-radius from the universal selector */
+  /* to avoid unexpected rounded corners. */
+  border-radius: 0;
   font-size: 14px;
   padding: 0px;
   background: transparent;
@@ -15,6 +17,7 @@ window#waybar {
   border-style: none;
 }
 
+/* === THIS IS THE MAIN CHANGED BLOCK === */
 #cpu,
 #window,
 #memory,
@@ -26,26 +29,29 @@ window#waybar {
 #tray,
 #workspaces,
 #pulseaudio {
-  background-image: linear-gradient(to bottom, #27232b 100%);
-
-  margin: 6px;
-  margin-right: 0px;
-  padding: 4px 8px;
-  border-radius: 8px;
+  background: transparent; /* Let the main waybar background show through */
+  margin: 0px;             /* Remove space between modules */
+  padding: 0 10px;         /* Add horizontal space so icons aren't cramped */
+  border-radius: 0px;      /* Remove rounded corners from modules */
   color: #d8cab8;
 
   border-style: none;
   transition-duration: 120ms;
 }
+/* ======================================= */
 
 #clock {
-  margin-right: 6px;
+  /* You can keep or remove this if you want a final gap */
+  margin-right: 10px;
 }
 
 #pulseaudio:hover {
+  /* The background will now highlight just behind the text/icon */
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
   transition-duration: 120ms;
+  /* Add border-radius here if you want the hover effect to be rounded */
+  border-radius: 8px;
 }
 
 #custom-disk {
@@ -59,6 +65,7 @@ window#waybar {
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
   transition-duration: 120ms;
+  border-radius: 8px; /* Optional: make hover rounded */
 }
 
 #tray menu {
@@ -108,12 +115,13 @@ window#waybar {
 }
 
 #battery {
-  background-color: #222222;
+  /* This rule is fine, it just sets the default color */
   color: #ffffff;
 }
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  color: #1d2021;
-  background-color: #fc4649;
+  /* This will now change the text color, not background, which is good */
+  color: #fc4649;
+  background-color: transparent; /* Ensure no background appears */
 }

@@ -14,13 +14,13 @@
   "modules-center": [
   ],
   "modules-right": [
+    "tray",
     "memory",
     "cpu",
     "custom/disk",
     "network",
     "battery",
     "pulseaudio",
-    "tray",
     "clock"
   ],
   "hyprland/workspaces": {
