@@ -1,5 +1,5 @@
 {
-  "keyMappings": "unmapAll\nmap j scrollDown\nmap k scrollUp\nmap G scrollFullPageDown\nmap gg scrollFullPageUp\nmap u goBack\nmap i goForward\nmap h LinkHints.activateMode\nmap H LinkHints.activateModeToOpenInNewTab\nmap gi focusInput",
+  "keyMappings": "unmapAll\nmap j scrollDown\nmap k scrollUp\nmap G scrollFullPageDown\nmap gg scrollFullPageUp\nmap u goBack\nmap i goForward\nmap h LinkHints.activateMode\nmap H LinkHints.activateModeToOpenInNewTab\nmap gi focusInput\nmap n nextTab\nmap m previousTab",
   "scrollStepSize": 200,
   "settingsVersion": "2.3"
 }
