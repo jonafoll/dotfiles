@@ -1,0 +1,1 @@
+zoxide zsh fzf kitty waybar hyprland mpv git vim nvim wofi eww ly htop yay pipewire blueman bluez bluez-utils zathura nautilus hyprlock hyprpaper hyprshot
