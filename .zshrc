@@ -79,6 +79,7 @@ alias ll='ls -alFh --color=auto --group-directories-first'
 alias e='nvim'
 alias vim='nvim'
 alias p='sudo pacman'
+alias c='__zoxide_z'
 
 # Shell integrations
 eval "$(fzf --zsh)"
