@@ -20,7 +20,7 @@
     "custom/disk",
     "battery",
     "pulseaudio",
-    "custom/weather",
+    "custom/wttrbar",
     "clock"
   ],
   "hyprland/workspaces": {
@@ -39,12 +39,13 @@
     "tooltip": true,
     "tooltip-format": "{title}" // Show full title on hover
 },
-  "custom/weather": {
+  "custom/wttrbar": {
     "format": {},
     "tooltip": true,
     "interval": 1800,
-    "exec": "~/.config/waybar/scripts/weather.sh",
-    "on-click": "xdg-open https://wttr.in/$(cat ~/.config/waybar/scripts/weather.sh | grep CITY | cut -d '\"' -f 2)"
+    // Add location here
+    "exec": "wttrbar --date-format '%d/%m/%Y' --location ",
+    "return-type": "json"
   },
 
   // Replace disk here

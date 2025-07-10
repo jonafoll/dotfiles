@@ -17,9 +17,20 @@ window#waybar {
   border-style: none;
 }
 
+/* Tooltip */
+tooltip {
+    background-color: #1e1e2e; /* A dark background */
+    color: #cdd6f4;            /* A light, readable text color */
+    border-radius: 7px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #89b4fa;     /* A nice accent color */
+}
+
 /* === THIS IS THE MAIN CHANGED BLOCK === */
 #cpu,
 #custom-weather,
+#custom-wttrbar,
 #window,
 #memory,
 #battery,
