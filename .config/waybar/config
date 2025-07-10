@@ -18,9 +18,9 @@
     "memory",
     "cpu",
     "custom/disk",
-    "network",
     "battery",
     "pulseaudio",
+    "custom/weather",
     "clock"
   ],
   "hyprland/workspaces": {
@@ -39,11 +39,14 @@
     "tooltip": true,
     "tooltip-format": "{title}" // Show full title on hover
 },
-  "custom/applauncher": {
-    "format": "〇",
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
-    "tooltip": false
+  "custom/weather": {
+    "format": {},
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "on-click": "xdg-open https://wttr.in/$(cat ~/.config/waybar/scripts/weather.sh | grep CITY | cut -d '\"' -f 2)"
   },
+
   // Replace disk here
     "custom/disk": {
         "exec": "df -h /dev/nvme0n1p5 | tail -n 1 | awk '{print $3 \" / \" $2}'",

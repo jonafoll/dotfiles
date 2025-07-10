@@ -19,6 +19,7 @@ window#waybar {
 
 /* === THIS IS THE MAIN CHANGED BLOCK === */
 #cpu,
+#custom-weather,
 #window,
 #memory,
 #battery,
