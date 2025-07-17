@@ -14,7 +14,7 @@ fi
 filter_pattern='/$|\.(jpg|jpeg|png|gif|bmp|webp|svg|heif|avif)$'
 
 # The text for our custom button
-slideshow_button="[🖼️ View All in This Folder]"
+slideshow_button="[▶ View All]"
 
 # Navigate to the starting directory
 cd "$start_dir"
