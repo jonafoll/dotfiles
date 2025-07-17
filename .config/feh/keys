@@ -1,0 +1,17 @@
+unbind j
+unbind k
+unbind h
+unbind l
+unbind u
+unbind i
+
+scroll_right l
+scroll_left h
+scroll_up k
+scroll_down j
+
+next_img J
+prev_img K
+
+zoom_in  u
+zoom_out i
