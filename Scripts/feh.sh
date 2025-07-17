@@ -9,36 +9,52 @@ if [ ! -d "$start_dir" ]; then
     exit 1
 fi
 
+# A regex pattern to filter for directories or common image file types.
+# This pattern is case-insensitive due to grep's '-i' flag.
+filter_pattern='/$|\.(jpg|jpeg|png|gif|bmp|webp|svg|heif|avif)$'
+
+# The text for our custom button
+slideshow_button="[🖼️ View All in This Folder]"
+
 # Navigate to the starting directory
 cd "$start_dir"
 
-# --- MODIFIED: More accurate button text ---
-slideshow_button="[View All in Folder]"
-
 # Main loop for the menu
 while true; do
-    # Prepend our custom button to the 'ls' output.
-    selection=$( (echo "$slideshow_button"; ls -aF) | wofi --dmenu --prompt "$(basename "$(pwd)")/")
+    # --- MODIFIED: We now build the list in a specific order ---
+    # We use a subshell '( ... )' to group the output of multiple commands.
+    selection=$( (
+        # 1. ALWAYS on top: The slideshow button.
+        echo "$slideshow_button"
+
+        # 2. SECOND: The 'up' directory, if we are not at the root '/'.
+        if [ "$(pwd)" != "/" ]; then
+            echo "../"
+        fi
+
+        # 3. THE REST: List everything else, sorted, and filtered.
+        #    --group-directories-first: Puts all other directories before files.
+        #    grep (filter_pattern): Keeps only directories and specified image files.
+        #    grep -v (remove . and ..): We exclude './' and '../' because we
+        #                               handle '..' manually and don't need '.'.
+        ls -aF --group-directories-first | \
+            grep -E -i "$filter_pattern" | \
+            grep -v -E '^\./$|^\.\./$'
+
+    ) | wofi --dmenu --prompt "$(basename "$(pwd)")/") # Pipe the whole constructed list to wofi
 
     # Exit if the user presses Esc (selection is empty)
     if [[ -z "$selection" ]]; then
         exit 0
     fi
 
-    # Check if our custom button was selected first
+    # The selection handling logic remains the same and works perfectly.
     if [[ "$selection" == "$slideshow_button" ]]; then
-        # --- CORRECTED COMMAND ---
-        # Run feh on the current directory ('.').
-        # --randomize: shows images in a random order.
-        # --scale-down: fits images to the screen.
-        # We have REMOVED --recursive to only show images in the current directory.
         feh --randomize --scale-down . &
         break
-    # If the selection ends with a "/", it's a directory.
     elif [[ "$selection" == */ ]]; then
         cd "${selection%/}"
         continue
-    # If the selection is a regular file.
     elif [[ -f "$selection" ]]; then
         feh --scale-down "$selection" &
         break
