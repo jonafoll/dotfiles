@@ -12,3 +12,7 @@ width=500
 no_actions=true
 prompt= Search
 hide_scroll=true
+
+# Alt+k and alt+j to move up and down
+key_up=Alt-k
+key_down=Alt-j
